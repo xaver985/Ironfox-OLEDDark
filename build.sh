@@ -8,11 +8,15 @@ wget -q https://raw.githubusercontent.com/iBotPeaches/Apktool/master/scripts/lin
 chmod +x apktool*
 
 rm -rf patched patched_signed.apk
-./apktool d -s latest.apk -o patched 
+./apktool d latest.apk -o patched 
 rm -rf patched/META-INF
 
 sed -i 's/<color name="fx_mobile_layer_color_1">.*/<color name="fx_mobile_layer_color_1">#ff000000<\/color>/g' patched/res/values-night/colors.xml
 sed -i 's/<color name="fx_mobile_layer_color_2">.*/<color name="fx_mobile_layer_color_2">@color\/photonDarkGrey90<\/color>/g' patched/res/values-night/colors.xml
+
+sed -i 's/ff2b2a33/ff000000/g' patched/smali_classes2/mozilla/components/ui/colors/PhotonColors.smali
+sed -i 's/ff42414d/ff15141a/g' patched/smali_classes2/mozilla/components/ui/colors/PhotonColors.smali
+sed -i 's/ff52525e/ff15141a/g' patched/smali_classes2/mozilla/components/ui/colors/PhotonColors.smali
 
 ./apktool b patched -o patched.apk --use-aapt2
 
