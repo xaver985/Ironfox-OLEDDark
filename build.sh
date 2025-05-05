@@ -1,7 +1,9 @@
 #!/bin/bash
-data=$(curl -s https://fdroid.ironfoxoss.org/fdroid/repo/index-v1.json)
-apk=$(echo $data | jq -r '.packages."org.ironfoxoss.ironfox"[0].apkName')
-wget -q $(echo "https://fdroid.ironfoxoss.org/fdroid/repo/$apk") -O latest.apk
+
+arch=${1:-arm64-v8a}
+data=$(curl -s https://gitlab.com/api/v4/projects/ironfox-oss%2FIronFox/releases | jq -r '.[0]')
+apk=$(echo "$LATEST_RELEASE" | jq -r '.assets.links[] | select(.name | endswith("'"-$ARCH.apk"'")) | .url')
+wget -q "$apk" -O latest.apk
 
 wget -q https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.11.1.jar -O apktool.jar
 wget -q https://raw.githubusercontent.com/iBotPeaches/Apktool/master/scripts/linux/apktool
