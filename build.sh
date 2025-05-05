@@ -2,7 +2,7 @@
 
 arch=${1:-arm64-v8a}
 data=$(curl -s https://gitlab.com/api/v4/projects/ironfox-oss%2FIronFox/releases | jq -r '.[0]')
-apk=$(echo "$LATEST_RELEASE" | jq -r '.assets.links[] | select(.name | endswith("'"-$ARCH.apk"'")) | .url')
+apk=$(echo "$data" | jq -r '.assets.links[] | select(.name | endswith("'"-$ARCH.apk"'")) | .url')
 wget -q "$apk" -O latest.apk
 
 wget -q https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.11.1.jar -O apktool.jar
