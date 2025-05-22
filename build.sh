@@ -24,6 +24,8 @@ sed -i 's/ff52525e/ff23212b/g' patched/smali*/mozilla/components/ui/colors/Photo
 sed -i 's/ff5b5b66/ff2b2936/g' patched/smali*/mozilla/components/ui/colors/PhotonColors.smali
 sed -i 's/1c1b22/000000/g' patched/assets/extensions/readerview/readerview.css
 sed -i 's/eeeeee/e3e3e3/g' patched/assets/extensions/readerview/readerview.css
+sed -i 's/mipmap\/ic_launcher_round/drawable\/ic_launcher_foreground/g' patched/res/drawable-v23/splash_screen.xml
+sed -i 's/160\.0dip/200\.0dip/g' patched/res/drawable-v23/splash_screen.xml
 
 ./apktool b patched -o patched.apk --use-aapt2
 
