@@ -38,7 +38,7 @@ jobs:
           chmod +x ./build.sh
           ./build.sh
           echo "${{ secrets.KEYSTORE }}" | base64 -di > keystore.jks
-          apksigner sign --ks keystore.jks --ks-type PKCS12 --ks-pass pass:${{ secrets.KEYSTORE_PASSPHRASE }} patched_signed.apk
+          apksigner sign --ks keystore.jks --ks-pass pass:${{ secrets.KEYSTORE_PASSPHRASE }} patched_signed.apk
       - name: Get release notes
         run: |
           RELEASE_NOTES=$(curl -s https://gitlab.com/api/v4/projects/ironfox-oss%2FIronFox/releases/v$BUILD_VERSION | jq -r .description | sed '/## Checksums/,/This release was automatically generated/d')
