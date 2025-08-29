@@ -26,7 +26,7 @@ sed -i 's/eeeeee/e3e3e3/g' patched/assets/extensions/readerview/readerview.css
 sed -i 's/mipmap\/ic_launcher_round/drawable\/ic_launcher_foreground/g' patched/res/drawable-v23/splash_screen.xml
 sed -i 's/160\.0dip/200\.0dip/g' patched/res/drawable-v23/splash_screen.xml
 
-./apktool b patched -o patched.apk --use-aapt2
+./apktool b patched -o patched.apk
 
 zipalign 4 patched.apk patched_signed.apk
 rm -rf patched patched.apk
