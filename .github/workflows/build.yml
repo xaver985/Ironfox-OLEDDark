@@ -7,13 +7,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Get latest release info
-        id: getLatest
-        uses: cardinalby/git-get-release-action@v1
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-        with:
-          latest: true
+      # - name: Get latest release info
+      #  id: getLatest
+      #  uses: cardinalby/git-get-release-action@v1
+      #  env:
+      #    GITHUB_TOKEN: ${{ github.token }}
+      #  with:
+      #    latest: true
       - name: Install dependencies
         run: |
             sudo apt update
